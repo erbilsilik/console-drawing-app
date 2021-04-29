@@ -1,0 +1,11 @@
+{
+  "name": "erbil_silik_evenito_coding_problem",
+  "version": "1.0.0",
+  "description": "Console drawing application",
+  "main": "main.js",
+  "scripts": {
+    "start": "node app/main.js"
+  },
+  "author": "Erbil Silik",
+  "license": "ISC"
+}
