@@ -1,9 +1,11 @@
+const { DEFAULT_EMPTY_COLOR } = require('../constants/defaults');
+
 function floodFillUtil(screen, width, height, x, y, prevC, newC) {
   if (x < 0 || x >= height || y < 0 || y >= width || screen[x][y] !== prevC || screen[x][y] === newC) {
     return;
   }
 
-  if (screen[x][y] === ' ') {
+  if (screen[x][y] === DEFAULT_EMPTY_COLOR) {
     screen[x][y] = newC;
   }
 

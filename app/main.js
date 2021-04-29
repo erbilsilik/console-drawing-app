@@ -1,6 +1,6 @@
-require('./logs');
-const userInput = require('./userInput');
+require('./appDescription');
+const userInput = require('./inputs/userInput');
 
 (async () => {
-  userInput([]);
+  userInput();
 })();
