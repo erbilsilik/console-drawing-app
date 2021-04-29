@@ -46,6 +46,7 @@ const input = (image = []) => {
       canvas.width = width;
       canvas.height = height;
       canvas.drawCanvas();
+      canvas.update();
     }
     // ------- DRAW CANVAS INPUT -------
 
@@ -55,6 +56,7 @@ const input = (image = []) => {
       const actionRemoved = userInput.split(' ');
       [x1, y1, x2, y2] = actionRemoved.slice(1, actionRemoved.length).map((point) => Number(point));
       canvas.drawLine(x1, y1, x2, y2);
+      canvas.update();
     }
     // ------- LINE DRAW INPUT -------
 
@@ -64,6 +66,7 @@ const input = (image = []) => {
       const actionRemoved = userInput.split(' ');
       [x1, y1, x2, y2] = actionRemoved.slice(1, actionRemoved.length).map((point) => Number(point));
       canvas.drawRectangle(x1, y1, x2, y2);
+      canvas.update();
     }
     // ------- RECTANGLE DRAW INPUT -------
 
@@ -74,6 +77,7 @@ const input = (image = []) => {
       const actionRemoved = userInput.split(' ');
       [x, y] = actionRemoved.slice(1, actionRemoved.length).map((point) => Number(point));
       canvas.bucketFill(x, y);
+      canvas.update();
     }
     // ------- BUCKET-FILL INPUT -------
 

@@ -5,7 +5,6 @@ const {
 
 const floodFill = require('./floodFill');
 
-
 class Canvas {
   constructor() {
     this.width = DEFAULT_WIDTH;
@@ -24,7 +23,6 @@ class Canvas {
         this.pushEmpty(value, i, j);
       }
     }
-    this.draw();
   }
 
   drawLine(x1, y1, x2, y2) {
@@ -68,7 +66,6 @@ class Canvas {
         }
       }
     }
-    this.draw();
   }
 
   drawRectangle(x1, y1, x2, y2) {
@@ -95,7 +92,6 @@ class Canvas {
         }
       }
     }
-    this.draw();
   }
 
   bucketFill(x, y) {
@@ -118,7 +114,6 @@ class Canvas {
         }
       }
     }
-    this.draw();
   }
 
   pushEmpty(value, i, j) {
@@ -129,7 +124,7 @@ class Canvas {
     }
   }
 
-  draw() {
+  update() {
     const extendedWith = this.width + 2;
 
     const border = DEFAULT_HORIZONTAL_BORDER.repeat(extendedWith);
