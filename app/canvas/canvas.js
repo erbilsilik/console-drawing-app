@@ -3,6 +3,10 @@ const {
   DEFAULT_VERTICAL_BORDER,
 } = require('../constants/defaults');
 
+const draw = Symbol();
+const fillCol = Symbol();
+const update = Symbol();
+
 class Canvas {
   constructor() {
     this.width = DEFAULT_WIDTH;
@@ -11,33 +15,20 @@ class Canvas {
     this.markColor = DEFAULT_MARK_COLOR;
   }
 
-  draw(callback) {
-    for (let i = 0; i < this.height; i++) {
-      const row = i + 1;
-      if (!this.image[i]) {
-        this.image.push([]);
-      }
-      for (let j = 0; j < this.width; j++) {
-        const col = j + 1;
-        const value = this.image[i][j];
-        callback({ i, j, row, col, value });
-      }
-    }
-  }
-
   drawCanvas() {
-    const alg = ({ i, j, colValue }) => {
-      this.pushEmpty(colValue, i, j);
+    const algorithm = ({ i, j, colValue }) => {
+      this[fillCol](colValue, i, j);
     };
-    this.draw(alg);
-    this.update();
+    this[draw](algorithm);
   }
 
   drawLine(x1, y1, x2, y2) {
     const slopeX = x2 - x1;
     const slopeY = y2 - y1;
 
-    const algorithm = ({ i, j, row, col, value }) => {
+    const algorithm = ({
+      i, j, row, col, value,
+    }) => {
       // line
       if (slopeX === 0 || slopeY === 0) {
         // vertical line
@@ -55,48 +46,43 @@ class Canvas {
           } else {
             this.image[i][j] = this.markColor;
           }
+        } else if (value === undefined) {
+          this.image[i].push();
         } else {
-          if (value === undefined) {
-            this.image[i].push();
-          } else {
-            this.image[i][j] = value;
-          }
+          this.image[i][j] = value;
         }
-      }
-      // empty
-      else {
-        this.pushEmpty(value, i, j);
+      } else {
+        this[fillCol](value, i, j);
       }
     };
-    this.draw(algorithm);
-    this.update();
+    this[draw](algorithm);
   }
 
   drawRectangle(x1, y1, x2, y2) {
-    const algorithm = ({ i, j, row, col, value }) => {
+    const algorithm = ({
+      i, j, row, col, value,
+    }) => {
       // rectangle
       if (
-        (col >= x1 && col <= x2) &&
-        (row === y1 || row === y2 || (row === y2 - y1 && (col === x1 || col === x2)))
+        (col >= x1 && col <= x2)
+        && (row === y1 || row === y2 || (row === y2 - y1 && (col === x1 || col === x2)))
       ) {
         if (value === undefined) {
           this.image[i].push(this.markColor);
         } else {
           this.image[i][j] = this.markColor;
         }
-      }
-      // empty
-      else {
-        this.pushEmpty(value, i, j);
+      } else {
+        this[fillCol](value, i, j);
       }
     };
-    this.draw(algorithm);
-    console.log(this.image);
-    this.update();
+    this[draw](algorithm);
   }
 
   bucketFill(x, y) {
-    const algorithm = ({ i, j, row, col }) => {
+    const algorithm = ({
+      i, j, row, col, value,
+    }) => {
       if (x && y) {
         if (col === x && row === y) {
           const floodFillUtil = (screen, width, height, x, y, prevC, newC) => {
@@ -109,7 +95,7 @@ class Canvas {
             }
 
             floodFillUtil(screen, width, height, x + 1, y, prevC, newC);
-            floodFillUtil(screen, width, height,x - 1, y, prevC, newC);
+            floodFillUtil(screen, width, height, x - 1, y, prevC, newC);
             floodFillUtil(screen, width, height, x, y + 1, prevC, newC);
             floodFillUtil(screen, width, height, x, y - 1, prevC, newC);
           };
@@ -119,25 +105,31 @@ class Canvas {
           };
           floodFill(this.image, this.width, this.height, y, x, this.markColor);
         }
-      }
-      // empty
-      else {
-        this.pushEmpty(value, i, j);
+      } else {
+        this[fillCol](value, i, j);
       }
     };
-    this.draw(algorithm);
-    this.update();
+    this[draw](algorithm);
   }
 
-  pushEmpty(value, i, j) {
-    if (value === undefined && (i !== 0 || i !== this.height - 1)) {
-      this.image[i].push(DEFAULT_EMPTY_COLOR);
-    } else {
-      this.image[i][j] = value;
+  [draw](callback) {
+    for (let i = 0; i < this.height; i++) {
+      const row = i + 1;
+      if (!this.image[i]) {
+        this.image.push([]);
+      }
+      for (let j = 0; j < this.width; j++) {
+        const col = j + 1;
+        const value = this.image[i][j];
+        callback({
+          i, j, row, col, value,
+        });
+      }
     }
+    this[update]();
   }
 
-  update() {
+  [update]() {
     const extendedWith = this.width + 2;
 
     const border = DEFAULT_HORIZONTAL_BORDER.repeat(extendedWith);
@@ -155,17 +147,14 @@ class Canvas {
     }
     console.log(border);
   }
+
+  [fillCol](value, i, j) {
+    if (value === undefined && (i !== 0 || i !== this.height - 1)) {
+      this.image[i].push(DEFAULT_EMPTY_COLOR);
+    } else {
+      this.image[i][j] = value;
+    }
+  }
 }
 
-module.exports = class SingletonCanvas {
-  constructor() {
-    throw new Error('Use SingletonCanvas.getInstance()');
-  }
-
-  static getInstance() {
-    if (!SingletonCanvas.instance) {
-      SingletonCanvas.instance = new Canvas();
-    }
-    return SingletonCanvas.instance;
-  }
-};
+module.exports = Canvas;

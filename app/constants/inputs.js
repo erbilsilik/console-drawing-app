@@ -11,5 +11,5 @@ module.exports = {
   CANVAS,
   LINE,
   RECTANGLE,
-  BUCKET_FILL
+  BUCKET_FILL,
 };

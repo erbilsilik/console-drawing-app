@@ -1,22 +1,21 @@
 const readline = require('readline');
 
 const userInputChecks = require('./checks');
-const { QUIT, COLOR, CANVAS, RECTANGLE, LINE, BUCKET_FILL } = require('../constants/inputs');
+const {
+  QUIT, COLOR, CANVAS, RECTANGLE, LINE, BUCKET_FILL,
+} = require('../constants/inputs');
 
-const SingletonCanvas = require('../canvas/canvas');
+const Canvas = require('../canvas/canvas');
 
-const input = (image = []) => {
-  // ------- GET CANVAS  -------
-  const canvas = SingletonCanvas.getInstance();
-  // ------- GET CANVAS  -------
-
+const input = (canvas = new Canvas()) => {
   const rl = readline.createInterface({
     input: process.stdin,
-    output: process.stdout
+    output: process.stdout,
   });
 
   rl.question('enter command: ', (userInput) => {
-    let width, height, x1, y1, x2, y2, x, y;
+    let width; let height; let x1; let y1; let x2; let y2; let x; let
+      y;
 
     // -------  QUIT INPUT -------
     const isQuitInput = userInputChecks.get(QUIT).test(userInput);
@@ -33,7 +32,7 @@ const input = (image = []) => {
       [markColor] = actionRemoved.slice(1, actionRemoved.length);
       canvas.markColor = markColor;
       rl.close();
-      input(image);
+      input(canvas);
       return;
     }
     // ------- CHANGE COLOR INPUT  -------
@@ -67,7 +66,6 @@ const input = (image = []) => {
     }
     // ------- RECTANGLE DRAW INPUT -------
 
-
     // ------- BUCKET-FILL INPUT -------
     const isBucketFillInput = userInputChecks.get(BUCKET_FILL).test(userInput);
     if (isBucketFillInput) {
@@ -79,7 +77,7 @@ const input = (image = []) => {
 
     rl.close();
 
-    input(image);
+    input(canvas);
   });
 };
 

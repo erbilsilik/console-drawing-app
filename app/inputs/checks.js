@@ -1,4 +1,6 @@
-const { QUIT, COLOR, CANVAS, LINE, RECTANGLE, BUCKET_FILL } = require('../constants/inputs');
+const {
+  QUIT, COLOR, CANVAS, LINE, RECTANGLE, BUCKET_FILL,
+} = require('../constants/inputs');
 
 const quitRegex = /^Q$/;
 const colorRegex = /^C\s\w$/;
@@ -13,5 +15,5 @@ module.exports = new Map([
   [CANVAS, canvasRegex],
   [LINE, lineRegex],
   [RECTANGLE, rectangleRegex],
-  [BUCKET_FILL, bucketFillRegex]
+  [BUCKET_FILL, bucketFillRegex],
 ]);

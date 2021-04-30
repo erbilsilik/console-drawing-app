@@ -9,6 +9,6 @@ console.log(`R x1 y1 x2 y2 Create a new rectangle, whose upper left corner is (x
 console.log(`B x y Fill the entire area connected to (x,y) with selected colour. 
   The behaviour of this is the same as that of the "bucket fill" tool in paint programs.\n`);
 
-console.log(`Set the selected colour to “c”. The default colour is “x”.\n`);
+console.log('Set the selected colour to “c”. The default colour is “x”.\n');
 
-console.log(`Q Quit the program.\n`);
+console.log('Q Quit the program.\n');

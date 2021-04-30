@@ -1,8 +1,8 @@
-const SingletonCanvas = require('../../canvas/canvas');
-const { DEFAULT_EMPTY_COLOR } = require('../../constants/defaults');
+const Canvas = require('../../../app/canvas/canvas');
+const { DEFAULT_EMPTY_COLOR } = require('../../../app/constants/defaults');
 
 test('test 1', () => {
-  const canvas = SingletonCanvas.getInstance();
+  const canvas = new Canvas();
   canvas.width = 20;
   canvas.height = 4;
   canvas.drawCanvas();
@@ -16,26 +16,26 @@ test('test 1', () => {
       'o', 'o', 'o', 'o', 'o',
       'o', 'o', 'o', 'o', 'o',
       'o', 'o', 'o', 'o', 'o',
-      'x', 'x', 'x', 'x', 'x'
+      'x', 'x', 'x', 'x', 'x',
     ],
     [
       'x', 'x', 'x', 'x', 'x',
       'x', 'o', 'o', 'o', 'o',
       'o', 'o', 'o', 'o', 'o',
-      'x', DEFAULT_EMPTY_COLOR, DEFAULT_EMPTY_COLOR, DEFAULT_EMPTY_COLOR, 'x'
+      'x', DEFAULT_EMPTY_COLOR, DEFAULT_EMPTY_COLOR, DEFAULT_EMPTY_COLOR, 'x',
     ],
     [
       DEFAULT_EMPTY_COLOR, DEFAULT_EMPTY_COLOR, DEFAULT_EMPTY_COLOR, DEFAULT_EMPTY_COLOR, DEFAULT_EMPTY_COLOR,
       'x', 'o', 'o', 'o', 'o',
       'o', 'o', 'o', 'o', 'o',
-      'x', 'x', 'x', 'x', 'x'
+      'x', 'x', 'x', 'x', 'x',
     ],
     [
       DEFAULT_EMPTY_COLOR, DEFAULT_EMPTY_COLOR, DEFAULT_EMPTY_COLOR, DEFAULT_EMPTY_COLOR, DEFAULT_EMPTY_COLOR,
       'x', 'o', 'o', 'o', 'o',
       'o', 'o', 'o', 'o', 'o',
-      'o', 'o', 'o', 'o', 'o'
-    ]
+      'o', 'o', 'o', 'o', 'o',
+    ],
   ];
   console.log(canvas.image);
   expect(canvas.image).toEqual(result);
