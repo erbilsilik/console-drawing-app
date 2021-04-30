@@ -1,5 +1,5 @@
-const Canvas = require('../../../app/canvas/canvas');
-const { DEFAULT_EMPTY_COLOR } = require('../../../app/constants/defaults');
+const Canvas = require('../../../src/canvas/canvas');
+const { DEFAULT_EMPTY_COLOR } = require('../../../src/constants/defaults');
 
 test('test 1', () => {
   const canvas = new Canvas();
@@ -37,6 +37,6 @@ test('test 1', () => {
       'o', 'o', 'o', 'o', 'o',
     ],
   ];
-  console.log(canvas.image);
+  console.table(canvas.image);
   expect(canvas.image).toEqual(result);
 });

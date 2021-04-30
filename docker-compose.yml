@@ -1,0 +1,9 @@
+version: '3.8'
+services:
+  console-drawing-app:
+    container_name: console-drawing-app
+    build:
+      context: ""
+    command: npm run start
+    stdin_open: true
+    tty: true

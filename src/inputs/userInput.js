@@ -14,8 +14,7 @@ const input = (canvas = new Canvas()) => {
   });
 
   rl.question('enter command: ', (userInput) => {
-    let width; let height; let x1; let y1; let x2; let y2; let x; let
-      y;
+    let width, height, x1, y1, x2, y2, x, y;
 
     // -------  QUIT INPUT -------
     const isQuitInput = userInputChecks.get(QUIT).test(userInput);
