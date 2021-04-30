@@ -23,6 +23,7 @@ class Canvas {
         this.pushEmpty(value, i, j);
       }
     }
+    this.update();
   }
 
   drawLine(x1, y1, x2, y2) {
@@ -66,6 +67,7 @@ class Canvas {
         }
       }
     }
+    this.update();
   }
 
   drawRectangle(x1, y1, x2, y2) {
@@ -92,6 +94,7 @@ class Canvas {
         }
       }
     }
+    this.update();
   }
 
   bucketFill(x, y) {
@@ -114,10 +117,11 @@ class Canvas {
         }
       }
     }
+    this.update();
   }
 
   pushEmpty(value, i, j) {
-    if (value === undefined && i !== 0 || i !== this.height - 1) {
+    if (value === undefined && (i !== 0 || i !== this.height - 1)) {
       this.image[i].push(DEFAULT_EMPTY_COLOR);
     } else {
       this.image[i][j] = value;
