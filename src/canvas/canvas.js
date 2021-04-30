@@ -139,8 +139,14 @@ class Canvas {
       for (let j = 0; j < extendedWith; j++) {
         if (j === 0 || j === this.width + 1) {
           process.stdout.write(DEFAULT_VERTICAL_BORDER);
-        } else {
-          process.stdout.write(this.image[i][j - 1]);
+        }
+        else {
+          try {
+            process.stdout.write(this.image[i][j - 1]);
+          }
+          catch (e) {
+            return;
+          }
         }
       }
       console.log('');

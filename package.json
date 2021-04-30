@@ -4,8 +4,10 @@
   "description": "Console drawing application",
   "main": "main.js",
   "scripts": {
-    "start": "node app/main.js",
-    "test": "jest"
+    "start": "node main.js",
+    "test": "jest",
+    "docker-start": "docker-compose up -d && docker exec -it console-drawing-app sh -c \"npm start\"",
+    "docker-test": "docker-compose up -d && docker exec -it console-drawing-app sh -c \"npm test\""
   },
   "author": "Erbil Silik",
   "license": "ISC",

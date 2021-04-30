@@ -1,7 +1,7 @@
-const Canvas = require('../../../app/canvas/canvas');
+const Canvas = require('../../../src/canvas/canvas');
 const {
   DEFAULT_EMPTY_COLOR, DEFAULT_WIDTH, DEFAULT_HEIGHT, DEFAULT_MARK_COLOR,
-} = require('../../../app/constants/defaults');
+} = require('../../../src/constants/defaults');
 
 let canvas;
 
@@ -94,15 +94,6 @@ describe('Canvas', () => {
         ' ', ' ', ' ', ' ', ' ',
       ],
     ];
-    expect(canvas.image).toEqual(result);
-  });
-
-  test('change color', () => {
-    canvas.width = 20;
-    canvas.height = 4;
-    canvas.markColor = 'w';
-    canvas.drawLine(6, 3, 6, 4);
-    const result = [[], [], ['w'], ['w']];
     expect(canvas.image).toEqual(result);
   });
 });
