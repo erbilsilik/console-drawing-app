@@ -16,73 +16,40 @@ class Canvas {
   }
 
   drawCanvas() {
-    const algorithm = ({ i, j, colValue }) => {
-      this[fillCol](colValue, i, j);
-    };
+    const algorithm = () => false;
     this[draw](algorithm);
   }
 
   drawLine(x1, y1, x2, y2) {
-    const algorithm = ({
-      i, j, row, col, value,
-    }) => {
-      if (
-        (
-        (row >= y1 && row <= y2) &&
-        (col >= x1 && col <= x2)
+    const algorithm = (row, col) => {
+      return (
+          (row >= y1 && row <= y2) &&
+          (col >= x1 && col <= x2)
         )
         ||
         (
           row === y1 &&
           (col >= x1 && col <= x2)
-        )
-      ) {
-        if (value === undefined) {
-          this.image[i].push(this.markColor);
-        }
-        else {
-          this.image[i][j] = this.markColor;
-        }
-      }
-      else {
-        this[fillCol](value, i, j);
-      }
+        );
     };
     this[draw](algorithm);
   }
 
   drawRectangle(x1, y1, x2, y2) {
-    const algorithm = ({
-      i, j, row, col, value,
-    }) => {
-      if (
-        (row === y1 && col >= x1 && col <= x2) ||
+    const algorithm = (row, col) => {
+      return (
+        row === y1 && col >= x1 && col <= x2) ||
         (row === y2 && col >= x1 && col <= x2) ||
         (
           (row > y1 && row < y2) &&
           (col === x1 || col === x2)
-        )
-      ) {
-        if (value === undefined) {
-          this.image[i].push(this.markColor);
-        }
-        else {
-          if (value === DEFAULT_EMPTY_COLOR) {
-            this.image[i][j] = this.markColor;
-          }
-        }
-      }
-      else {
-        this[fillCol](value, i, j);
-      }
+        );
     };
     this[draw](algorithm);
   }
 
   bucketFill(x, y) {
-    const algorithm = ({
-      i, j, row, col, value,
-    }) => {
+    const algorithm = (row, col) => {
       if (x && y) {
         if (col === x && row === y) {
           const floodFillUtil = (screen, width, height, x, y, prevC, newC) => {
@@ -104,11 +71,10 @@ class Canvas {
             floodFillUtil(screen, width, height, x, y, prevC, newC);
           };
           floodFill(this.image, this.width, this.height, y, x, this.markColor);
+          return true;
         }
       }
-      else {
-        this[fillCol](value, i, j);
-      }
+      return false;
     };
     this[draw](algorithm);
   }
@@ -122,9 +88,20 @@ class Canvas {
       for (let j = 0; j < this.width; j++) {
         const col = j + 1;
         const value = this.image[i][j];
-        callback({
-          i, j, row, col, value,
-        });
+        const checkResult = callback(row, col);
+        if (!checkResult) {
+          this[fillCol](value, i, j);
+        }
+        else {
+          if (value === undefined) {
+            this.image[i].push(this.markColor);
+          }
+          else {
+            if (value === DEFAULT_EMPTY_COLOR) {
+              this.image[i][j] = this.markColor;
+            }
+          }
+        }
       }
     }
     this[update]();

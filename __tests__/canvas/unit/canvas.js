@@ -41,30 +41,11 @@ describe('Canvas', () => {
     canvas.height = 4;
     canvas.drawLine(1, 2, 6, 2);
     const result = [
-      [
-        ' ', ' ', ' ', ' ', ' ',
-        ' ', ' ', ' ', ' ', ' ',
-        ' ', ' ', ' ', ' ', ' ',
-        ' ', ' ', ' ', ' ', ' '
-      ],
-      [
-        'x', 'x', 'x', 'x', 'x',
-        'x', ' ', ' ', ' ', ' ',
-        ' ', ' ', ' ', ' ', ' ',
-        ' ', ' ', ' ', ' ', ' '
-      ],
-      [
-        ' ', ' ', ' ', ' ', ' ',
-        ' ', ' ', ' ', ' ', ' ',
-        ' ', ' ', ' ', ' ', ' ',
-        ' ', ' ', ' ', ' ', ' '
-      ],
-      [
-        ' ', ' ', ' ', ' ', ' ',
-        ' ', ' ', ' ', ' ', ' ',
-        ' ', ' ', ' ', ' ', ' ',
-        ' ', ' ', ' ', ' ', ' '
-      ]
+      new Array(canvas.width).fill(DEFAULT_EMPTY_COLOR),
+      new Array(6).fill(canvas.markColor)
+        .concat(new Array(14).fill(DEFAULT_EMPTY_COLOR)),
+      new Array(canvas.width).fill(DEFAULT_EMPTY_COLOR),
+      new Array(canvas.width).fill(DEFAULT_EMPTY_COLOR)
     ];
     expect(canvas.image).toEqual(result);
   });
@@ -74,30 +55,14 @@ describe('Canvas', () => {
     canvas.height = 4;
     canvas.drawLine(6, 3, 6, 4);
     const result = [
-      [
-        ' ', ' ', ' ', ' ', ' ',
-        ' ', ' ', ' ', ' ', ' ',
-        ' ', ' ', ' ', ' ', ' ',
-        ' ', ' ', ' ', ' ', ' '
-      ],
-      [
-        ' ', ' ', ' ', ' ', ' ',
-        ' ', ' ', ' ', ' ', ' ',
-        ' ', ' ', ' ', ' ', ' ',
-        ' ', ' ', ' ', ' ', ' '
-      ],
-      [
-        ' ', ' ', ' ', ' ', ' ',
-        'x', ' ', ' ', ' ', ' ',
-        ' ', ' ', ' ', ' ', ' ',
-        ' ', ' ', ' ', ' ', ' '
-      ],
-      [
-        ' ', ' ', ' ', ' ', ' ',
-        'x', ' ', ' ', ' ', ' ',
-        ' ', ' ', ' ', ' ', ' ',
-        ' ', ' ', ' ', ' ', ' '
-      ]
+      new Array(canvas.width).fill(DEFAULT_EMPTY_COLOR),
+      new Array(canvas.width).fill(DEFAULT_EMPTY_COLOR),
+      new Array(5).fill(DEFAULT_EMPTY_COLOR)
+        .concat(['x'])
+        .concat(new Array(14).fill(DEFAULT_EMPTY_COLOR)),
+      new Array(5).fill(DEFAULT_EMPTY_COLOR)
+        .concat(['x'])
+        .concat(new Array(14).fill(DEFAULT_EMPTY_COLOR)),
     ];
     expect(canvas.image).toEqual(result);
   });
@@ -108,29 +73,18 @@ describe('Canvas', () => {
     canvas.drawRectangle(16, 1, 20, 3);
     const result = [
       [
-        ' ', ' ', ' ', ' ', ' ',
-        ' ', ' ', ' ', ' ', ' ',
-        ' ', ' ', ' ', ' ', ' ',
+        ...new Array(15).fill(DEFAULT_EMPTY_COLOR),
         'x', 'x', 'x', 'x', 'x',
       ],
       [
-        ' ', ' ', ' ', ' ', ' ',
-        ' ', ' ', ' ', ' ', ' ',
-        ' ', ' ', ' ', ' ', ' ',
+        ...new Array(15).fill(DEFAULT_EMPTY_COLOR),
         'x', ' ', ' ', ' ', 'x',
       ],
       [
-        ' ', ' ', ' ', ' ', ' ',
-        ' ', ' ', ' ', ' ', ' ',
-        ' ', ' ', ' ', ' ', ' ',
+        ...new Array(15).fill(DEFAULT_EMPTY_COLOR),
         'x', 'x', 'x', 'x', 'x',
       ],
-      [
-        ' ', ' ', ' ', ' ', ' ',
-        ' ', ' ', ' ', ' ', ' ',
-        ' ', ' ', ' ', ' ', ' ',
-        ' ', ' ', ' ', ' ', ' ',
-      ],
+      new Array(canvas.width).fill(DEFAULT_EMPTY_COLOR),
     ];
     expect(canvas.image).toEqual(result);
   });
