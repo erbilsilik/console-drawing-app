@@ -1,6 +1,6 @@
 const {
   QUIT, COLOR, CANVAS, LINE, RECTANGLE, BUCKET_FILL,
-} = require('../constants/inputs');
+} = require('../../constants/inputs');
 
 const quitRegex = /^Q$/;
 const colorRegex = /^C\s\w$/;
