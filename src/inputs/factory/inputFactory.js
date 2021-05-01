@@ -11,6 +11,7 @@ module.exports = class InputFactory {
     if (instance) {
       return instance.handle(canvas);
     }
+    return { terminate: false }
   }
 
   getInstance() {
