@@ -1,7 +1,7 @@
 const Canvas = require('../../../src/canvas/canvas');
 const { DEFAULT_EMPTY_COLOR } = require('../../../src/constants/defaults');
 
-test('test 1', () => {
+test('test 2 -> Sample I/O', () => {
   const canvas = new Canvas();
   canvas.width = 20;
   canvas.height = 4;

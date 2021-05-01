@@ -41,17 +41,30 @@ describe('Canvas', () => {
     canvas.height = 4;
     canvas.drawLine(1, 2, 6, 2);
     const result = [
-      [],
       [
-        DEFAULT_MARK_COLOR,
-        DEFAULT_MARK_COLOR,
-        DEFAULT_MARK_COLOR,
-        DEFAULT_MARK_COLOR,
-        DEFAULT_MARK_COLOR,
-        DEFAULT_MARK_COLOR,
+        ' ', ' ', ' ', ' ', ' ',
+        ' ', ' ', ' ', ' ', ' ',
+        ' ', ' ', ' ', ' ', ' ',
+        ' ', ' ', ' ', ' ', ' '
       ],
-      [],
-      [],
+      [
+        'x', 'x', 'x', 'x', 'x',
+        'x', ' ', ' ', ' ', ' ',
+        ' ', ' ', ' ', ' ', ' ',
+        ' ', ' ', ' ', ' ', ' '
+      ],
+      [
+        ' ', ' ', ' ', ' ', ' ',
+        ' ', ' ', ' ', ' ', ' ',
+        ' ', ' ', ' ', ' ', ' ',
+        ' ', ' ', ' ', ' ', ' '
+      ],
+      [
+        ' ', ' ', ' ', ' ', ' ',
+        ' ', ' ', ' ', ' ', ' ',
+        ' ', ' ', ' ', ' ', ' ',
+        ' ', ' ', ' ', ' ', ' '
+      ]
     ];
     expect(canvas.image).toEqual(result);
   });
@@ -60,7 +73,32 @@ describe('Canvas', () => {
     canvas.width = 20;
     canvas.height = 4;
     canvas.drawLine(6, 3, 6, 4);
-    const result = [[], [], [DEFAULT_MARK_COLOR], [DEFAULT_MARK_COLOR]];
+    const result = [
+      [
+        ' ', ' ', ' ', ' ', ' ',
+        ' ', ' ', ' ', ' ', ' ',
+        ' ', ' ', ' ', ' ', ' ',
+        ' ', ' ', ' ', ' ', ' '
+      ],
+      [
+        ' ', ' ', ' ', ' ', ' ',
+        ' ', ' ', ' ', ' ', ' ',
+        ' ', ' ', ' ', ' ', ' ',
+        ' ', ' ', ' ', ' ', ' '
+      ],
+      [
+        ' ', ' ', ' ', ' ', ' ',
+        'x', ' ', ' ', ' ', ' ',
+        ' ', ' ', ' ', ' ', ' ',
+        ' ', ' ', ' ', ' ', ' '
+      ],
+      [
+        ' ', ' ', ' ', ' ', ' ',
+        'x', ' ', ' ', ' ', ' ',
+        ' ', ' ', ' ', ' ', ' ',
+        ' ', ' ', ' ', ' ', ' '
+      ]
+    ];
     expect(canvas.image).toEqual(result);
   });
 

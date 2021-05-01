@@ -23,35 +23,28 @@ class Canvas {
   }
 
   drawLine(x1, y1, x2, y2) {
-    const slopeX = x2 - x1;
-    const slopeY = y2 - y1;
-
     const algorithm = ({
       i, j, row, col, value,
     }) => {
-      // line
-      if (slopeX === 0 || slopeY === 0) {
-        // vertical line
-        if (slopeX === 0 && (col >= x1 && col <= x2) && (row >= y1 && row <= y2)) {
-          if (value === undefined) {
-            this.image[i].push(this.markColor);
-          } else {
-            this.image[i][j] = this.markColor;
-          }
+      if (
+        (
+        (row >= y1 && row <= y2) &&
+        (col >= x1 && col <= x2)
+        )
+        ||
+        (
+          row === y1 &&
+          (col >= x1 && col <= x2)
+        )
+      ) {
+        if (value === undefined) {
+          this.image[i].push(this.markColor);
         }
-        // horizontal line
-        else if (slopeY === 0 && (row === y1 && col >= x1 && col <= x2)) {
-          if (value === undefined) {
-            this.image[i].push(this.markColor);
-          } else {
-            this.image[i][j] = this.markColor;
-          }
-        } else if (value === undefined) {
-          this.image[i].push();
-        } else {
-          this.image[i][j] = value;
+        else {
+          this.image[i][j] = this.markColor;
         }
-      } else {
+      }
+      else {
         this[fillCol](value, i, j);
       }
     };
@@ -62,17 +55,24 @@ class Canvas {
     const algorithm = ({
       i, j, row, col, value,
     }) => {
-      // rectangle
       if (
-        (col >= x1 && col <= x2)
-        && (row === y1 || row === y2 || (row === y2 - y1 && (col === x1 || col === x2)))
+        (row === y1 && col >= x1 && col <= x2) ||
+        (row === y2 && col >= x1 && col <= x2) ||
+        (
+          (row > y1 && row < y2) &&
+          (col === x1 || col === x2)
+        )
       ) {
         if (value === undefined) {
           this.image[i].push(this.markColor);
-        } else {
-          this.image[i][j] = this.markColor;
         }
-      } else {
+        else {
+          if (value === DEFAULT_EMPTY_COLOR) {
+            this.image[i][j] = this.markColor;
+          }
+        }
+      }
+      else {
         this[fillCol](value, i, j);
       }
     };
@@ -105,7 +105,8 @@ class Canvas {
           };
           floodFill(this.image, this.width, this.height, y, x, this.markColor);
         }
-      } else {
+      }
+      else {
         this[fillCol](value, i, j);
       }
     };
