@@ -4,7 +4,6 @@ const {
 } = require('../constants/defaults');
 
 const draw = Symbol();
-const fillCol = Symbol();
 const update = Symbol();
 
 class Canvas {
@@ -90,7 +89,12 @@ class Canvas {
         const value = this.image[i][j];
         const checkResult = callback(row, col);
         if (!checkResult) {
-          this[fillCol](value, i, j);
+          if (value === undefined && (i !== 0 || i !== this.height - 1)) {
+            this.image[i].push(DEFAULT_EMPTY_COLOR);
+          }
+          else {
+            this.image[i][j] = value;
+          }
         }
         else {
           if (value === undefined) {
@@ -130,14 +134,6 @@ class Canvas {
       console.log('');
     }
     console.log(border);
-  }
-
-  [fillCol](value, i, j) {
-    if (value === undefined && (i !== 0 || i !== this.height - 1)) {
-      this.image[i].push(DEFAULT_EMPTY_COLOR);
-    } else {
-      this.image[i][j] = value;
-    }
   }
 }
 
