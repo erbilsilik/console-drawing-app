@@ -74,15 +74,15 @@ describe('Canvas', () => {
     const result = [
       [
         ...new Array(15).fill(DEFAULT_EMPTY_COLOR),
-        'x', 'x', 'x', 'x', 'x',
+        DEFAULT_MARK_COLOR, DEFAULT_MARK_COLOR, DEFAULT_MARK_COLOR, DEFAULT_MARK_COLOR, DEFAULT_MARK_COLOR,
       ],
       [
         ...new Array(15).fill(DEFAULT_EMPTY_COLOR),
-        'x', ' ', ' ', ' ', 'x',
+        DEFAULT_MARK_COLOR, DEFAULT_EMPTY_COLOR, DEFAULT_EMPTY_COLOR, DEFAULT_EMPTY_COLOR, DEFAULT_MARK_COLOR,
       ],
       [
         ...new Array(15).fill(DEFAULT_EMPTY_COLOR),
-        'x', 'x', 'x', 'x', 'x',
+        DEFAULT_MARK_COLOR, DEFAULT_MARK_COLOR, DEFAULT_MARK_COLOR, DEFAULT_MARK_COLOR, DEFAULT_MARK_COLOR,
       ],
       new Array(canvas.width).fill(DEFAULT_EMPTY_COLOR),
     ];

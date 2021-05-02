@@ -23,7 +23,7 @@ class Canvas {
   drawLine(x1, y1, x2, y2) {
     const algorithm = (row, col) => {
       return (
-          (row >= y1 && row <= y2) &&
+          row === y1 &&
           (col >= x1 && col <= x2)
         )
         ||

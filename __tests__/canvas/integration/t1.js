@@ -13,97 +13,104 @@ test('test 1 -> E letter in box with filled outside', () => {
   canvas.drawRectangle(4, 1, 45, 9);
   canvas.markColor = 'q';
   canvas.bucketFill(40, 3);
+  const d = DEFAULT_EMPTY_COLOR;
   const result = [
     [
-      DEFAULT_EMPTY_COLOR, DEFAULT_EMPTY_COLOR, DEFAULT_EMPTY_COLOR, 'x', 'x', 'x', 'x', 'x',
+      d, d, d, 'x', 'x', 'x', 'x', 'x',
       'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x',
       'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x',
       'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x',
       'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x',
-      'x', 'x', 'x', 'x', 'x', DEFAULT_EMPTY_COLOR, DEFAULT_EMPTY_COLOR, DEFAULT_EMPTY_COLOR,
-      DEFAULT_EMPTY_COLOR, DEFAULT_EMPTY_COLOR
+      'x', 'x', 'x', 'x', 'x', d, d, d,
+      d, d
     ],
     [
-      DEFAULT_EMPTY_COLOR, DEFAULT_EMPTY_COLOR, DEFAULT_EMPTY_COLOR, 'x',
-      DEFAULT_EMPTY_COLOR, DEFAULT_EMPTY_COLOR, DEFAULT_EMPTY_COLOR, DEFAULT_EMPTY_COLOR,
-      DEFAULT_EMPTY_COLOR, 'x', 'x', 'x', 'x', 'x', 'x', 'x',
-      'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x',
-      'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x',
-      'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x',
-      'q', 'q', 'q', 'q', 'x', DEFAULT_EMPTY_COLOR, DEFAULT_EMPTY_COLOR, DEFAULT_EMPTY_COLOR,
-      DEFAULT_EMPTY_COLOR, DEFAULT_EMPTY_COLOR
+      d, d, d, 'x', d, d,
+      d, d,
+      d, d, d, d, d,
+      d, d, d,
+      d, d, 'x', 'x', 'x', 'x', 'x', 'x',
+      'x', 'x', 'x', 'x', 'x', 'x', 'q', 'q',
+      'q', 'q', 'q', 'q', 'q', 'q', 'q', 'q',
+      'q', 'q', 'q', 'q', 'x', d, d, d,
+      d, d
     ],
     [
-      DEFAULT_EMPTY_COLOR, DEFAULT_EMPTY_COLOR, DEFAULT_EMPTY_COLOR, 'x', DEFAULT_EMPTY_COLOR, DEFAULT_EMPTY_COLOR,
-      DEFAULT_EMPTY_COLOR, DEFAULT_EMPTY_COLOR,
-      DEFAULT_EMPTY_COLOR, 'x', 'x', 'x', 'x', 'x', 'x', 'x',
-      'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x',
-      'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x',
-      'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x',
-      'q', 'q', 'q', 'q', 'x', DEFAULT_EMPTY_COLOR, DEFAULT_EMPTY_COLOR, DEFAULT_EMPTY_COLOR,
-      DEFAULT_EMPTY_COLOR, DEFAULT_EMPTY_COLOR
+      d, d, d, 'x', d, d,
+      d, d,
+      d, d, d, d, d,
+      d, d, d,
+      d, d, 'x', 'q', 'q', 'q', 'q', 'q',
+      'q', 'q', 'q', 'q', 'q', 'q', 'q', 'q',
+      'q', 'q', 'q', 'q', 'q', 'q', 'q', 'q',
+      'q', 'q', 'q', 'q', 'x', d, d, d,
+      d, d
     ],
     [
-      DEFAULT_EMPTY_COLOR, DEFAULT_EMPTY_COLOR, DEFAULT_EMPTY_COLOR, 'x', DEFAULT_EMPTY_COLOR, DEFAULT_EMPTY_COLOR,
-      DEFAULT_EMPTY_COLOR, DEFAULT_EMPTY_COLOR,
-      DEFAULT_EMPTY_COLOR, 'x', 'x', 'x', 'x', 'x', 'x', 'x',
-      'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x',
-      'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x',
-      'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x',
-      'q', 'q', 'q', 'q', 'x', DEFAULT_EMPTY_COLOR, DEFAULT_EMPTY_COLOR, DEFAULT_EMPTY_COLOR,
-      DEFAULT_EMPTY_COLOR, DEFAULT_EMPTY_COLOR
+      d, d, d, 'x', d, d,
+      d, d,
+      d, d, d, d, d,
+      d, d, d,
+      d, d, 'x', 'q', 'q', 'q', 'q', 'q',
+      'q', 'q', 'q', 'q', 'q', 'q', 'q', 'q',
+      'q', 'q', 'q', 'q', 'q', 'q', 'q', 'q',
+      'q', 'q', 'q', 'q', 'x', d, d, d,
+      d, d
     ],
     [
-      DEFAULT_EMPTY_COLOR, DEFAULT_EMPTY_COLOR, DEFAULT_EMPTY_COLOR, 'x', DEFAULT_EMPTY_COLOR, DEFAULT_EMPTY_COLOR,
-      DEFAULT_EMPTY_COLOR, DEFAULT_EMPTY_COLOR,
-      DEFAULT_EMPTY_COLOR, 'x', 'x', 'x', 'x', 'x', 'x', 'x',
-      'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x',
-      'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x',
-      'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x',
-      'q', 'q', 'q', 'q', 'x', DEFAULT_EMPTY_COLOR, DEFAULT_EMPTY_COLOR, DEFAULT_EMPTY_COLOR,
-      DEFAULT_EMPTY_COLOR, DEFAULT_EMPTY_COLOR
+      d, d, d, 'x', d, d,
+      d, d,
+      d, d, d, d, d,
+      d, d, d,
+      d, d, 'x', 'x', 'x', 'x', 'x', 'x',
+      'x', 'x', 'x', 'x', 'x', 'x', 'q', 'q',
+      'q', 'q', 'q', 'q', 'q', 'q', 'q', 'q',
+      'q', 'q', 'q', 'q', 'x', d, d, d,
+      d, d
     ],
     [
-      DEFAULT_EMPTY_COLOR, DEFAULT_EMPTY_COLOR, DEFAULT_EMPTY_COLOR, 'x', DEFAULT_EMPTY_COLOR, DEFAULT_EMPTY_COLOR,
-      DEFAULT_EMPTY_COLOR, DEFAULT_EMPTY_COLOR,
-      DEFAULT_EMPTY_COLOR, 'x', 'x', 'x', 'x', 'x', 'x', 'x',
-      'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x',
-      'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x',
-      'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x',
-      'q', 'q', 'q', 'q', 'x', DEFAULT_EMPTY_COLOR, DEFAULT_EMPTY_COLOR, DEFAULT_EMPTY_COLOR,
-      DEFAULT_EMPTY_COLOR, DEFAULT_EMPTY_COLOR
+      d, d, d, 'x', d, d,
+      d, d,
+      d, d, d, d, d,
+      d, d, d,
+      d, d, 'x', 'q', 'q', 'q', 'q', 'q',
+      'q', 'q', 'q', 'q', 'q', 'q', 'q', 'q',
+      'q', 'q', 'q', 'q', 'q', 'q', 'q', 'q',
+      'q', 'q', 'q', 'q', 'x', d, d, d,
+      d, d
     ],
     [
-      DEFAULT_EMPTY_COLOR, DEFAULT_EMPTY_COLOR, DEFAULT_EMPTY_COLOR, 'x', DEFAULT_EMPTY_COLOR, DEFAULT_EMPTY_COLOR,
-      DEFAULT_EMPTY_COLOR, DEFAULT_EMPTY_COLOR,
-      DEFAULT_EMPTY_COLOR, 'x', 'x', 'x', 'x', 'x', 'x', 'x',
-      'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x',
-      'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x',
-      'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x',
-      'q', 'q', 'q', 'q', 'x', DEFAULT_EMPTY_COLOR, DEFAULT_EMPTY_COLOR, DEFAULT_EMPTY_COLOR,
-      DEFAULT_EMPTY_COLOR, DEFAULT_EMPTY_COLOR
+      d, d, d, 'x', d, d,
+      d, d,
+      d, d, d, d, d,
+      d, d, d,
+      d, d, 'x', 'q', 'q', 'q', 'q', 'q',
+      'q', 'q', 'q', 'q', 'q', 'q', 'q', 'q',
+      'q', 'q', 'q', 'q', 'q', 'q', 'q', 'q',
+      'q', 'q', 'q', 'q', 'x', d, d, d,
+      d, d
     ],
     [
-      DEFAULT_EMPTY_COLOR, DEFAULT_EMPTY_COLOR, DEFAULT_EMPTY_COLOR, 'x', DEFAULT_EMPTY_COLOR, DEFAULT_EMPTY_COLOR,
-      DEFAULT_EMPTY_COLOR, DEFAULT_EMPTY_COLOR,
-      DEFAULT_EMPTY_COLOR, 'x', 'x', 'x', 'x', 'x', 'x', 'x',
-      'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x',
-      'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x',
-      'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x',
-      'q', 'q', 'q', 'q', 'x', DEFAULT_EMPTY_COLOR, DEFAULT_EMPTY_COLOR, DEFAULT_EMPTY_COLOR,
-      DEFAULT_EMPTY_COLOR, DEFAULT_EMPTY_COLOR
+      d, d, d, 'x', d, d,
+      d, d,
+      d, d, d, d, d,
+      d, d, d,
+      d, d, 'x', 'x', 'x', 'x', 'x', 'x',
+      'x', 'x', 'x', 'x', 'x', 'x', 'q', 'q',
+      'q', 'q', 'q', 'q', 'q', 'q', 'q', 'q',
+      'q', 'q', 'q', 'q', 'x', d, d, d,
+      d, d
     ],
     [
-      DEFAULT_EMPTY_COLOR, DEFAULT_EMPTY_COLOR, DEFAULT_EMPTY_COLOR, 'x', 'x', 'x', 'x', 'x',
+      d, d, d, 'x', 'x', 'x', 'x', 'x',
       'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x',
       'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x',
       'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x',
       'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x',
-      'x', 'x', 'x', 'x', 'x', DEFAULT_EMPTY_COLOR, DEFAULT_EMPTY_COLOR, DEFAULT_EMPTY_COLOR,
-      DEFAULT_EMPTY_COLOR, DEFAULT_EMPTY_COLOR
+      'x', 'x', 'x', 'x', 'x', d, d, d,
+      d, d
     ],
-    new Array(canvas.width).fill(DEFAULT_EMPTY_COLOR)
+    new Array(canvas.width).fill(d)
   ];
-  console.table(canvas.image);
   expect(canvas.image).toEqual(result);
 });
