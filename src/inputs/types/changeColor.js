@@ -5,6 +5,7 @@ module.exports = class ChangeColorInput {
 
   handle(canvas) {
     const [markColor] = this.userInputArr.slice(1, this.userInputArr.length);
+    canvas.prevMarkColor = canvas.markColor;
     canvas.markColor = markColor;
 
     return { };

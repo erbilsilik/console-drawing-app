@@ -4,7 +4,7 @@
   "description": "Console drawing application",
   "main": "main.js",
   "scripts": {
-    "start": "node --stack_size=8192 main.js",
+    "start": "node main.js",
     "test": "jest",
     "docker-start": "docker-compose up -d && docker exec -it console-drawing-app sh -c \"npm start\"",
     "docker-test": "docker-compose up -d && docker exec -it console-drawing-app sh -c \"npm test\""

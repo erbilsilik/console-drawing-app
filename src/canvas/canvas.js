@@ -12,6 +12,7 @@ class Canvas {
     this.height = DEFAULT_HEIGHT;
     this.image = [];
     this.markColor = DEFAULT_MARK_COLOR;
+    this.prevMarkColor = DEFAULT_MARK_COLOR;
   }
 
   drawCanvas() {
@@ -48,39 +49,30 @@ class Canvas {
   }
 
   bucketFill(x, y) {
-    const floodFillUtil = (screen, width, height, x, y, prevC, newC) => {
-      if (
-        x < 0 ||
-        x >= height ||
-        y < 0 ||
-        y >= width ||
-        screen[x][y] !== prevC ||
-        screen[x][y] === newC
-      ) {
-        return;
-      }
+      const validCoordinates = (row, col) => (
+        row >= 0 && row < this.image.length && col >= 0 && col < this.image[row].length
+      );
 
-      if (screen[x][y] === DEFAULT_EMPTY_COLOR) {
-        screen[x][y] = newC;
-      }
+      const fillStack = [];
+      fillStack.push([y, x]);
 
-      floodFillUtil(screen, width, height, x + 1, y, prevC, newC);
-      floodFillUtil(screen, width, height, x - 1, y, prevC, newC);
-      floodFillUtil(screen, width, height, x, y + 1, prevC, newC);
-      floodFillUtil(screen, width, height, x, y - 1, prevC, newC);
-    };
-    const floodFill = (screen, width, height, x, y, newC) => {
-      const prevC = screen[x][y];
-      floodFillUtil(screen, width, height, x, y, prevC, newC);
-    };
-    floodFill(
-      this.image,
-      this.width,
-      this.height,
-      y,
-      x,
-      this.markColor
-    );
+      while (fillStack.length > 0)
+      {
+        const [row, col] = fillStack.pop();
+
+        if (!validCoordinates(row, col))
+          continue;
+
+        if (this.image[row][col] === this.markColor || this.image[row][col] === this.prevMarkColor)
+          continue;
+
+        this.image[row][col] = this.markColor;
+
+        fillStack.push([row + 1, col]);
+        fillStack.push([row - 1, col]);
+        fillStack.push([row, col + 1]);
+        fillStack.push([row, col - 1]);
+      }
     this[update]();
   }
 
