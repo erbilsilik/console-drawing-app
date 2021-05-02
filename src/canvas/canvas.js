@@ -28,8 +28,8 @@ class Canvas {
         )
         ||
         (
-          row === y1 &&
-          (col >= x1 && col <= x2)
+          col === x1 &&
+          (row >= y1 && row <= y2)
         );
     };
     this[draw](algorithm);

@@ -9,7 +9,7 @@ test('test 1 -> E letter in box with filled outside', () => {
   canvas.drawLine(20, 2, 30, 2);
   canvas.drawLine(20, 5, 30, 5);
   canvas.drawLine(20, 8, 30, 8);
-  canvas.drawLine(10, 1, 40, 9);
+  canvas.drawLine(19, 2, 19, 8);
   canvas.drawRectangle(4, 1, 45, 9);
   canvas.markColor = 'q';
   canvas.bucketFill(40, 3);
