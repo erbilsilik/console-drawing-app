@@ -1,4 +1,4 @@
-## Evenito Task - Console Drawing Application
+## Console Drawing Application
 
 
 ### Installation and Running
